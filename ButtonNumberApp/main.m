@@ -1,0 +1,16 @@
+//
+//  main.m
+//  ButtonNumberApp
+//
+//  Created by Dustin Flanary on 4/21/15.
+//  Copyright (c) 2015 Dustin Flanary. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+
+int main(int argc, char * argv[]) {
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
