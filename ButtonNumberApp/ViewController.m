@@ -33,16 +33,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.hiddenField1 = [[UITextField alloc] initWithFrame:CGRectMake(TEXT_FRAME)];
-    [self.hiddenField1 setHidden:YES];
-    self.hiddenField1.keyboardType = UIKeyboardTypeNumberPad;
-    self.hiddenField1.delegate = self;
-    [self.hiddenField1 becomeFirstResponder];
-    [self.hiddenField1 resignFirstResponder];
+//    self.hiddenField1 = [[UITextField alloc] initWithFrame:CGRectMake(TEXT_FRAME)];
+//    [self.hiddenField1 setHidden:YES];
+//    self.hiddenField1.keyboardType = UIKeyboardTypeNumberPad;
+//    self.hiddenField1.delegate = self.hiddenField1;
+//    [self.hiddenField1 becomeFirstResponder];
+//    [self.hiddenField1 resignFirstResponder];
 
     
 }
 - (IBAction)button1Pressed:(id)sender {
+    
+    UIAlertController *addNumberAlert = [UIAlertController alertControllerWithTitle:@"Enter a number" message:@"Please" preferredStyle:UIAlertControllerStyleAlert];
+    [addNumberAlert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Enter number here";
+        textField.keyboardType = UIKeyboardTypeNumberPad;
+        //[textField setHidden:YES];
+       
+        
+    }];
+    
+    [addNumberAlert addObserver:<#(NSObject *)#> forKeyPath:<#(NSString *)#> options:<#(NSKeyValueObservingOptions)#> context:<#(void *)#>]
+    
+    [addNumberAlert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        return ;
+    }]];
+    
+    [addNumberAlert addAction:[UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UITextField *number = addNumberAlert.textFields.firstObject;
+        NSString *numberString = [NSString string];
+        numberString = number.text;
+    }]];
+    
+    [self presentViewController:addNumberAlert animated:YES completion:nil];
+    
     
     //self.hiddenField1:shouldChangeCharactersInRange:
     
@@ -73,6 +97,10 @@
 }
 
 - (IBAction)button3Pressed:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pick a number" message:@"Please" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done???", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+    
 }
 - (IBAction)button4Pressed:(id)sender {
     
