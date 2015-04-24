@@ -47,13 +47,15 @@
     UIAlertController *addNumberAlert = [UIAlertController alertControllerWithTitle:@"Enter a number" message:@"Please" preferredStyle:UIAlertControllerStyleAlert];
     [addNumberAlert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"Enter number here";
-        textField.keyboardType = UIKeyboardTypeNumberPad;
+        textField.keyboardType = UIKeyboardTypeDecimalPad;
         //[textField setHidden:YES];
        
         
     }];
     
-    [addNumberAlert addObserver:<#(NSObject *)#> forKeyPath:<#(NSString *)#> options:<#(NSKeyValueObservingOptions)#> context:<#(void *)#>]
+    
+    
+    //[addNumberAlert add]
     
     [addNumberAlert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         return ;
