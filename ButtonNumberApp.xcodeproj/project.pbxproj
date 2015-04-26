@@ -14,6 +14,7 @@
 		6B03FB671AE723FB00F38CDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B03FB661AE723FB00F38CDE /* Images.xcassets */; };
 		6B03FB6A1AE723FB00F38CDE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B03FB681AE723FB00F38CDE /* LaunchScreen.xib */; };
 		6B03FB761AE723FC00F38CDE /* ButtonNumberAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B03FB751AE723FC00F38CDE /* ButtonNumberAppTests.m */; };
+		6BAA21F81AEB321B006A8789 /* KeypadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA21F71AEB321B006A8789 /* KeypadViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		6B03FB6F1AE723FB00F38CDE /* ButtonNumberAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ButtonNumberAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B03FB741AE723FB00F38CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B03FB751AE723FC00F38CDE /* ButtonNumberAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonNumberAppTests.m; sourceTree = "<group>"; };
+		6BAA21F61AEB321B006A8789 /* KeypadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeypadViewController.h; sourceTree = "<group>"; };
+		6BAA21F71AEB321B006A8789 /* KeypadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeypadViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				6B03FB601AE723FB00F38CDE /* ViewController.h */,
 				6B03FB611AE723FB00F38CDE /* ViewController.m */,
 				6B03FB631AE723FB00F38CDE /* Main.storyboard */,
+				6BAA21F61AEB321B006A8789 /* KeypadViewController.h */,
+				6BAA21F71AEB321B006A8789 /* KeypadViewController.m */,
 				6B03FB661AE723FB00F38CDE /* Images.xcassets */,
 				6B03FB681AE723FB00F38CDE /* LaunchScreen.xib */,
 				6B03FB591AE723FB00F38CDE /* Supporting Files */,
@@ -221,6 +226,7 @@
 			files = (
 				6B03FB621AE723FB00F38CDE /* ViewController.m in Sources */,
 				6B03FB5F1AE723FB00F38CDE /* AppDelegate.m in Sources */,
+				6BAA21F81AEB321B006A8789 /* KeypadViewController.m in Sources */,
 				6B03FB5C1AE723FB00F38CDE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +424,7 @@
 				6B03FB7B1AE723FC00F38CDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6B03FB7C1AE723FC00F38CDE /* Build configuration list for PBXNativeTarget "ButtonNumberAppTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +433,7 @@
 				6B03FB7E1AE723FC00F38CDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

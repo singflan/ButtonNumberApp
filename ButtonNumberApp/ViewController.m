@@ -8,10 +8,8 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *button1;
-@property (weak, nonatomic) IBOutlet UIButton *button2;
-@property (weak, nonatomic) IBOutlet UIButton *button3;
+@interface ViewController () 
+
 @property (weak, nonatomic) IBOutlet UIButton *button4;
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
 @property (strong, nonatomic) IBOutlet UITextField *hiddenField1;
@@ -23,7 +21,6 @@
 @end
 
 @implementation ViewController
-#define TEXT_FRAME                 -50,-50,0,0
 
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -44,30 +41,32 @@
 }
 - (IBAction)button1Pressed:(id)sender {
     
-    UIAlertController *addNumberAlert = [UIAlertController alertControllerWithTitle:@"Enter a number" message:@"Please" preferredStyle:UIAlertControllerStyleAlert];
-    [addNumberAlert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"Enter number here";
-        textField.keyboardType = UIKeyboardTypeDecimalPad;
-        //[textField setHidden:YES];
-       
-        
-    }];
     
     
-    
-    //[addNumberAlert add]
-    
-    [addNumberAlert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        return ;
-    }]];
-    
-    [addNumberAlert addAction:[UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        UITextField *number = addNumberAlert.textFields.firstObject;
-        NSString *numberString = [NSString string];
-        numberString = number.text;
-    }]];
-    
-    [self presentViewController:addNumberAlert animated:YES completion:nil];
+//    UIAlertController *addNumberAlert = [UIAlertController alertControllerWithTitle:@"Enter a number" message:@"Please" preferredStyle:UIAlertControllerStyleAlert];
+//    [addNumberAlert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+//        textField.placeholder = @"Enter number here";
+//        textField.keyboardType = UIKeyboardTypeDecimalPad;
+//        //[textField setHidden:YES];
+//       
+//        
+//    }];
+//    
+//    
+//    
+//    //[addNumberAlert add]
+//    
+//    [addNumberAlert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//        return ;
+//    }]];
+//    
+//    [addNumberAlert addAction:[UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        UITextField *number = addNumberAlert.textFields.firstObject;
+//        NSString *numberString = [NSString string];
+//        numberString = number.text;
+//    }]];
+//    
+//    [self presentViewController:addNumberAlert animated:YES completion:nil];
     
     
     //self.hiddenField1:shouldChangeCharactersInRange:
@@ -99,13 +98,33 @@
 }
 
 - (IBAction)button3Pressed:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pick a number" message:@"Please" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done???", nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alert show];
+    
     
 }
 - (IBAction)button4Pressed:(id)sender {
     
+    
+  //  self.answerLabel.text = //
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    UIStoryboardPopoverSegue* popoverSegue = (UIStoryboardPopoverSegue*)segue;
+    
+    [popoverSegue.popoverController setPopoverContentSize:CGSizeMake(viewController.view.frame.size.width, viewController.view.frame.size.height)];
+    
+    popoverSegue.popoverController.delegate=self;
+    
+    [viewController setPopoverController:popoverSegue.popoverController];
+}
+    var popOver = segue.destinationViewController as! PopOverViewController
+    popOver.popoverPresentationController!.delegate = self
+}
+
+// If I don't want to allow clicks outside of the popover I would uncomment the below code.
+
+-(BOOL)popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    return NO;
 }
 
 - (void)didReceiveMemoryWarning {
