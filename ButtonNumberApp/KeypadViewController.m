@@ -32,8 +32,7 @@
     text = [text stringByAppendingString:[sender currentTitle]];
     [self.keypadLabel setText:text];
     
-  //  [ dismissPopoverAnimated:YES];
-    
+    [self dismissViewControllerAnimated:YES completion: nil];
     
 }
 

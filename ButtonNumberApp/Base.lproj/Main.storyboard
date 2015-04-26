@@ -23,7 +23,7 @@
                                 </state>
                                 <connections>
                                     <action selector="button1Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hxC-5z-NHL"/>
-                                    <segue destination="2TU-Hu-3TP" kind="popoverPresentation" identifier="button1Segue" popoverAnchorView="vhw-80-WdH" id="dNb-c3-cBB">
+                                    <segue destination="2TU-Hu-3TP" kind="popoverPresentation" identifier="button1Segue" popoverAnchorView="vhw-80-WdH" id="zgQ-TH-6A2">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -44,9 +44,6 @@
                                 </state>
                                 <connections>
                                     <action selector="button3Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DFc-Qb-oed"/>
-                                    <segue destination="2TU-Hu-3TP" kind="popoverPresentation" identifier="button3Segue" popoverAnchorView="1bC-YB-kly" id="UZp-X4-M6O">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9O-Gy-T6X">
@@ -282,7 +279,4 @@
             <point key="canvasLocation" x="262" y="-294"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="UZp-X4-M6O"/>
-    </inferredMetricsTieBreakers>
 </document>

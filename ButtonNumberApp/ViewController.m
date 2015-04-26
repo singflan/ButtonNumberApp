@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "KeypadViewController.h"
 
 @interface ViewController () 
 
@@ -16,6 +17,8 @@
 @property double label1Number;
 @property double label2Number;
 @property double answer;
+@property (weak) UIPopoverController *keypadPopover;
+
 
 
 @end
@@ -30,6 +33,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    // Add popover dismissal observer
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dismissPopover) name:@"dismissKeypadPopover" object:nil];
+    
 //    self.hiddenField1 = [[UITextField alloc] initWithFrame:CGRectMake(TEXT_FRAME)];
 //    [self.hiddenField1 setHidden:YES];
 //    self.hiddenField1.keyboardType = UIKeyboardTypeNumberPad;
@@ -109,16 +115,25 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    UIStoryboardPopoverSegue* popoverSegue = (UIStoryboardPopoverSegue*)segue;
+//    KeypadViewController * viewController = (KeypadViewController*)[segue destinationViewController];
+//    
+//    UIStoryboardPopoverSegue* popoverSegue = (UIStoryboardPopoverSegue*)segue;
+//    
+//    [popoverSegue.popoverController setPopoverContentSize:CGSizeMake(viewController.view.frame.size.width, viewController.view.frame.size.height)];
+//    
+//    popoverSegue.sourceViewController.delegate = self;
+//    
+//    [viewController setPopoverController:popoverSegue.popoverController];
+//}
+//    var popOver = segue.destinationViewController as! PopOverViewController
+//    popOver.popoverPresentationController!.delegate = self
+
+    if ([segue.identifier  isEqual: @"button1Segue"]) {
+        KeypadViewController *kvc = segue.destinationViewController;
+        UIPopoverPresentationController *popoverPresentationController = kvc.popoverPresentationController;
+        popoverPresentationController.delegate = self;
     
-    [popoverSegue.popoverController setPopoverContentSize:CGSizeMake(viewController.view.frame.size.width, viewController.view.frame.size.height)];
-    
-    popoverSegue.popoverController.delegate=self;
-    
-    [viewController setPopoverController:popoverSegue.popoverController];
-}
-    var popOver = segue.destinationViewController as! PopOverViewController
-    popOver.popoverPresentationController!.delegate = self
+    }
 }
 
 // If I don't want to allow clicks outside of the popover I would uncomment the below code.
