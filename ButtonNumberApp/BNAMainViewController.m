@@ -12,6 +12,9 @@
 
 @interface BNAMainViewController () <KeypadDelegate>
 
+@property (strong, nonatomic) IBOutlet UIButton *button1;
+@property (strong, nonatomic) IBOutlet UIButton *button2;
+@property (strong, nonatomic) IBOutlet UIButton *button3;
 @property (weak, nonatomic) IBOutlet UIButton *button4;
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
 @property NSInteger firstNumber;
@@ -31,6 +34,11 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.operationSign = @"";
     self.result = nil;
+    
+    self.button1.backgroundColor = [UIColor yellowColor];
+    self.button2.backgroundColor = [UIColor yellowColor];
+    self.button3.backgroundColor = [UIColor yellowColor];
+    self.button4.backgroundColor = [UIColor yellowColor];
 
     
 }
@@ -91,6 +99,8 @@
         self.result = [NSNumber numberWithFloat:floatResult];
     
     }
+    
+    // Convert number to string and display on answer label
     NSString *label = [self.result stringValue];
     self.answerLabel.text = label;
 }
@@ -112,12 +122,12 @@
         kvc.delegate = self;
         kvc.firstButtonClicked = false;
         
-    } else  if ([segue.identifier isEqual:@"button2Segue"]){
-        BNAPickerViewController *pickerVC = segue.destinationViewController;
-        UIPopoverPresentationController *popoverPresentationController = pickerVC.popoverPresentationController;
-        popoverPresentationController.delegate = self;
-        
-    }
+    } //else  if ([segue.identifier isEqual:@"button2Segue"]){
+//        BNAPickerViewController *pickerVC = segue.destinationViewController;
+//        UIPopoverPresentationController *popoverPresentationController = pickerVC.popoverPresentationController;
+//        popoverPresentationController.delegate = self;
+//        
+//    }
 }
 
 // Custom delegate method protocol to change button title based on number pressed on the keypad
@@ -136,29 +146,6 @@
     
 }
 
-
-
-// I may not need this method
-//-(NSInteger)getInt:(NSString *)string {
-//    NSLog(string);
-//    NSInteger number = [string integerValue];
-//    return number;
-//}
-
-//-(void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
-//    if (self.button1.titleLabel.text != kvc.button1Result) {
-//        [self.button1 setTitle:kvc.button1Result forState:UIControlStateNormal];
-//    } else if (self.button3.titleLabel.text != kvc.button3Result) {
-//        [self.button3 setTitle:kvc.button3Result forState:UIControlStateNormal];
-//    }
-//}
-
-
-// If I don't want to allow clicks outside of the popover I would uncomment the below code.
-
-//-(BOOL)popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
-//    return NO;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
