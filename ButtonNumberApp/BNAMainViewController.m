@@ -10,64 +10,89 @@
 #import "KeypadViewController.h"
 #import "BNAPickerViewController.h"
 
-@interface BNAMainViewController ()
+@interface BNAMainViewController () <KeypadDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *button4;
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
 @property NSInteger firstNumber;
 @property NSInteger secondNumber;
+@property NSNumber *firstNum;
+@property NSNumber *secondNum;
 @property NSNumber *result;
-@property (weak) UIPopoverController *keypadPopover;
+@property NSString *operationSign;
+
 
 @end
 
 @implementation BNAMainViewController
 
-
-- (void) viewWillAppear:(BOOL)animated {
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-        
+    self.operationSign = @"";
+    self.result = nil;
 
     
 }
-- (IBAction)button1Pressed:(id)sender {
-    
-}
+
 - (IBAction)button2Pressed:(id)sender {
-//    UIAlertController *setButtonTitleAlert = [UIAlertController alertControllerWithTitle:@"Choose one" message:@"Mathematical operations" preferredStyle:UIAlertControllerStyleAlert];
-//    
-//        [setButtonTitleAlert addAction:[UIAlertAction actionWithTitle:@"+" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//            [self.button2 setTitle:@"+" forState:UIControlStateNormal];
-//        }]];
-//    
-//        [setButtonTitleAlert addAction:[UIAlertAction actionWithTitle:@"-" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//            [self.button2 setTitle:@"-" forState:UIControlStateNormal];
-//        }]];
-//    
-//        [setButtonTitleAlert addAction:[UIAlertAction actionWithTitle:@"*" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//            [self.button2 setTitle:@"*" forState:UIControlStateNormal];
-//        }]];
-//    
-//        [setButtonTitleAlert addAction:[UIAlertAction actionWithTitle:@"/" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//            [self.button2 setTitle:@"/" forState:UIControlStateNormal];
-//        }]];
-//    
-//        [self presentViewController:setButtonTitleAlert animated:YES completion:nil];
+    UIAlertController *setButtonTitleAlert = [UIAlertController alertControllerWithTitle:@"Choose one" message:@"Mathematical operations" preferredStyle:UIAlertControllerStyleAlert];
+    
+        [setButtonTitleAlert addAction:[UIAlertAction actionWithTitle:@"+" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            self.operationSign = @"+";
+            [self.button2 setTitle:self.operationSign forState:UIControlStateNormal];
+            
+        }]];
+    
+        [setButtonTitleAlert addAction:[UIAlertAction actionWithTitle:@"-" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            self.operationSign = @"-";
+            [self.button2 setTitle:self.operationSign forState:UIControlStateNormal];
+            
+
+        }]];
+    
+        [setButtonTitleAlert addAction:[UIAlertAction actionWithTitle:@"*" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            self.operationSign = @"*";
+            [self.button2 setTitle:self.operationSign forState:UIControlStateNormal];
+            
+
+        }]];
+    
+        [setButtonTitleAlert addAction:[UIAlertAction actionWithTitle:@"/" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            self.operationSign = @"/";
+            [self.button2 setTitle:self.operationSign forState:UIControlStateNormal];
+            
+
+        }]];
+    
+        [self presentViewController:setButtonTitleAlert animated:YES completion:nil];
+    
 }
 
-- (IBAction)button3Pressed:(id)sender {
-    
-    
-}
 - (IBAction)button4Pressed:(id)sender {
     
+    NSInteger intResult;
     
-  //  self.answerLabel.text = //
+    // Check button2's sign to perform the correct operation
+    if ([self.operationSign isEqualToString:@"+"]) {
+        intResult = self.firstNumber + self.secondNumber;
+        self.result = [NSNumber numberWithInteger:intResult];
+        
+    } else if ([self.operationSign isEqualToString:@"-"]) {
+        intResult = self.firstNumber - self.secondNumber;
+        self.result = [NSNumber numberWithInteger:intResult];
+
+    } else if ([self.operationSign isEqualToString:@"*"]) {
+        intResult = self.firstNumber * self.secondNumber;
+        self.result = [NSNumber numberWithInteger:intResult];
+        
+    } else if ([self.operationSign isEqualToString:@"/"]) {
+        CGFloat floatResult = (float)self.firstNumber / (float)self.secondNumber;
+        self.result = [NSNumber numberWithFloat:floatResult];
+    
+    }
+    NSString *label = [self.result stringValue];
+    self.answerLabel.text = label;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -77,20 +102,41 @@
         kvc = segue.destinationViewController;
         UIPopoverPresentationController *popoverPresentationController = kvc.popoverPresentationController;
         popoverPresentationController.delegate = self;
+        kvc.delegate = self;
         kvc.firstButtonClicked = true;
         
     } else if ([segue.identifier isEqual:@"button3Segue"]) {
         KeypadViewController *kvc = segue.destinationViewController;
         UIPopoverPresentationController *popoverPresentationController = kvc.popoverPresentationController;
         popoverPresentationController.delegate = self;
+        kvc.delegate = self;
         kvc.firstButtonClicked = false;
         
     } else  if ([segue.identifier isEqual:@"button2Segue"]){
         BNAPickerViewController *pickerVC = segue.destinationViewController;
         UIPopoverPresentationController *popoverPresentationController = pickerVC.popoverPresentationController;
         popoverPresentationController.delegate = self;
+        
     }
 }
+
+// Custom delegate method protocol to change button title based on number pressed on the keypad
+- (void)setButtonTitleLabel:(NSString *)string andBool:(BOOL)firstButtonClicked {
+    
+    if (firstButtonClicked) {
+        [self.button1 setTitle:string forState:UIControlStateNormal];
+        self.firstNumber = [string integerValue]; //This might be unnecessary
+        
+        
+    } else{
+        [self.button3 setTitle:string forState:UIControlStateNormal];
+        self.secondNumber = [string integerValue];
+        
+    }
+    
+}
+
+
 
 // I may not need this method
 //-(NSInteger)getInt:(NSString *)string {
@@ -107,15 +153,7 @@
 //    }
 //}
 
--(void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
-    //if (self.button1.titleLabel.text != kvc.button1Result) {
-    KeypadViewController *kvc = [[KeypadViewController alloc]init];
 
-    [self.button1 setTitle:kvc.button1Result forState:UIControlStateNormal];
-    //} else if (self.button3.titleLabel.text != kvc.button3Result) {
-    [self.button3 setTitle:kvc.button3Result forState:UIControlStateNormal];
-    //}
-}
 // If I don't want to allow clicks outside of the popover I would uncomment the below code.
 
 //-(BOOL)popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {

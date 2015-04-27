@@ -15,17 +15,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *keypadLabel;
 @property NSString *button1Result;
 @property NSString *button3Result;
-//@property NSString *keypadResult;
-//@property NSInteger firstInt;
-//@property NSInteger secondInt;
 @property BOOL *firstButtonClicked;
-
 @property (weak, nonatomic) id <KeypadDelegate> delegate;
 
-
 -(IBAction)keypadButtonPressed:(id)sender;
-- (void)setButtonTitleLabel:(NSString *)string;
-
 @end
 
-//@protocol KeypadDelegate <NSObject>
+// Creating a custom delegate and custom delegate protocol
+@protocol KeypadDelegate <NSObject>
+- (void)setButtonTitleLabel:(NSString *)string andBool:(BOOL)firstButtonClicked;
+
+@end

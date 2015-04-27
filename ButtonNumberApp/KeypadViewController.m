@@ -30,29 +30,16 @@
     NSString *buttonNumber = @"";
     buttonNumber = [buttonNumber stringByAppendingString:[sender currentTitle]];
    
+    // Just to confirm the number chosen
     [self.keypadLabel setText:buttonNumber];
     
-    //[self setButtonTitleLabel: YES number:buttonNumber];
-    [self setButtonTitleLabel:buttonNumber];
-    
-   // NSInteger numberChosen = [buttonNumber integerValue]; //Do I need this here?
-    
-    [self dismissViewControllerAnimated:YES completion: nil];
-    
-    
+    // Dismiss the popover and calling the method to assign the number to the button on the main view controller
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.delegate setButtonTitleLabel:buttonNumber andBool:self.firstButtonClicked];
+    }];
 }
 
-- (void)setButtonTitleLabel:(NSString *)string {
-    if (self.firstButtonClicked == true) {
-        self.button1Result = string;
-    } else {
-        self.button3Result = string;
-    }
-    
-    
-   // self.keypadResult = string;
-  
-}
+
 
 /*
 #pragma mark - Navigation
