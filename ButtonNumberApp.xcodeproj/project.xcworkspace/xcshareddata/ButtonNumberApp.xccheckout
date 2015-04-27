@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>E8B75B4F-9634-4319-BC49-13B8DE9E1426</string>
 	<key>IDESourceControlProjectName</key>
-	<string>ButtonNumberApp</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3F4548978D13CA6A545135CE27209E2099782154</key>
 		<string>https://github.com/singflan/ButtonNumberApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ButtonNumberApp.xcodeproj</string>
+	<string>ButtonNumberApp.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3F4548978D13CA6A545135CE27209E2099782154</key>

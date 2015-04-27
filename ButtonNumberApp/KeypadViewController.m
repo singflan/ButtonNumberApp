@@ -7,7 +7,7 @@
 //
 
 #import "KeypadViewController.h"
-#import "ViewController.h"
+#import "BNAMainViewController.h"
 
 @interface KeypadViewController ()
 @end
@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view.
 }
 
@@ -28,27 +27,32 @@
 
 
 -(IBAction)keypadButtonPressed:(id)sender {
-    NSString *text;
-    text = [text stringByAppendingString:[sender currentTitle]];
-    [self.keypadLabel setText:text];
+    NSString *buttonNumber = @"";
+    buttonNumber = [buttonNumber stringByAppendingString:[sender currentTitle]];
+   
+    [self.keypadLabel setText:buttonNumber];
+    
+    //[self setButtonTitleLabel: YES number:buttonNumber];
+    [self setButtonTitleLabel:buttonNumber];
+    
+   // NSInteger numberChosen = [buttonNumber integerValue]; //Do I need this here?
     
     [self dismissViewControllerAnimated:YES completion: nil];
     
+    
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if ([[segue identifier] isEqualToString:@"button1Segue"])
-//    {
-//        UIStoryboardPopoverSegue *pop = (UIStoryboardPopoverSegue*)segue;
-//        pop.keypadViewController.delegate = self;
-//    }
-//}
-
-//- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController {
-//    [self.popoverController dismissPopoverAnimated:YES];
-//    return YES;
-//}
+- (void)setButtonTitleLabel:(NSString *)string {
+    if (self.firstButtonClicked == true) {
+        self.button1Result = string;
+    } else {
+        self.button3Result = string;
+    }
+    
+    
+   // self.keypadResult = string;
+  
+}
 
 /*
 #pragma mark - Navigation

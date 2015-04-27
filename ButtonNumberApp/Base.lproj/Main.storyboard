@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HyJ-zH-Jyk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HyJ-zH-Jyk">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BNAMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -35,6 +35,9 @@
                                 </state>
                                 <connections>
                                     <action selector="button2Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mZH-zS-IGD"/>
+                                    <segue destination="yqH-3H-3E3" kind="popoverPresentation" identifier="button2Segue" popoverAnchorView="YUP-uq-gVL" id="db3-TJ-65X">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bC-YB-kly">
@@ -44,6 +47,9 @@
                                 </state>
                                 <connections>
                                     <action selector="button3Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DFc-Qb-oed"/>
+                                    <segue destination="2TU-Hu-3TP" kind="popoverPresentation" identifier="button3Segue" popoverAnchorView="1bC-YB-kly" id="9e4-YB-wBF">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9O-Gy-T6X">
@@ -58,16 +64,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ANSWER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0F-E5-hgp">
                                 <rect key="frame" x="264" y="289" width="73" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igv-pd-e6J">
-                                <rect key="frame" x="187" y="99" width="227" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -90,7 +89,6 @@
                         <outlet property="button2" destination="YUP-uq-gVL" id="wwv-Qp-Nmx"/>
                         <outlet property="button3" destination="1bC-YB-kly" id="jMD-4A-hKD"/>
                         <outlet property="button4" destination="I9O-Gy-T6X" id="UaL-jE-oLF"/>
-                        <outlet property="hiddenField1" destination="igv-pd-e6J" id="0jB-ZU-zGQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -260,6 +258,36 @@
             </objects>
             <point key="canvasLocation" x="1785" y="399"/>
         </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="CKh-JU-Ty7">
+            <objects>
+                <viewController id="yqH-3H-3E3" customClass="BNAPickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kep-IG-foY"/>
+                        <viewControllerLayoutGuide type="bottom" id="0OX-f7-i8q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="366-ZX-ePp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lxe-5u-Ngi">
+                                <rect key="frame" x="16" y="219" width="568" height="162"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Lxe-5u-Ngi" secondAttribute="centerX" id="1Pf-lR-TMb"/>
+                            <constraint firstAttribute="centerY" secondItem="Lxe-5u-Ngi" secondAttribute="centerY" id="OxN-tC-31z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="picker" destination="Lxe-5u-Ngi" id="gNd-j4-gTY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O9N-Mx-O9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1137" y="1060"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="3xJ-PM-CDL">
             <objects>
@@ -279,4 +307,7 @@
             <point key="canvasLocation" x="262" y="-294"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="zgQ-TH-6A2"/>
+    </inferredMetricsTieBreakers>
 </document>
